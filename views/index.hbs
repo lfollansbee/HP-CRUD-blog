@@ -1,2 +1,13 @@
-<h1>Dogs</h1>
-<p>My blog about cute dogs</p>
+<h1>The Leaky Cauldron</h1>
+<p>Blog for Harry Potter musings.</p>
+
+{{#each list}}
+  <div>
+    <h3><a href="/{{this.id}}">{{this.title}}</a></h3>
+    <p>{{this.user.name}}</p>
+    <p class="body">{{this.body}}</p>
+    <img class="image" src="{{this.img}}"
+  </div>
+{{/each}}
+
+<a href="/write"><button>Share Your Thoughts in the Pensieve</button></a>
