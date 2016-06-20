@@ -1,13 +1,16 @@
-<h1>The Leaky Cauldron</h1>
-<p>Blog for Harry Potter musings.</p>
+<div class="index">
+  <h1>The Leaky Cauldron</h1>
+  <p>Blog for Harry Potter musings.</p>
 
-<a href="/write"><button>Share Your Thoughts in the Pensieve</button></a>
+  <a href="/write"><button>Share Your Thoughts in the Pensieve</button></a>
 
-{{#each list}}
-  <div>
-    <h3><a href="/{{this.id}}">{{this.title}}</a></h3>
-    <p>by: {{this.name}}</p>
-    <p class="body">{{this.body}}</p>
-    <img class="image" src="{{this.img}}"
-  </div>
-{{/each}}
+  {{#each list}}
+    <div class="posts">
+      <h2><a href="/see-post/{{this.id}}">{{this.title}}</a></h2>
+      <p>by: {{this.name}}</p>
+      <p class="body">{{this.body}}</p>
+      <img class="image" src="{{this.img}}"><br>
+      <a href="/edit/{{this.id}}">Edit</a>
+    </div>
+  {{/each}}
+</div>

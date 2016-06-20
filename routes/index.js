@@ -24,9 +24,12 @@ router.post('/write', function(req, res, next) {
   });
 });
 
-
-// router.get('/:id/detail', function(req, res, next){
-//   knex('post')
-// })
+router.get('/see-post/:id', function(req, res, next){
+  knex('user').join('post', 'user_id', 'user.id').select('post.id', 'user.name','post.title', 'post.body', 'post.img').where({'post.id': req.params.id}).first()
+  .then(function(result){
+    console.log(result);
+    res.render('see-post', {result: result})
+  })
+})
 
 module.exports = router;

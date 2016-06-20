@@ -1,7 +1,18 @@
-<form action='/write' method='post'>
-  <input type="text" name='title' placeholder="Post Title">
-  <input type="text" name='user.name' placeholder="Author">
-  <textarea name="body" placeholder="Your Magical Thoughts"></textarea>
-  <input type="url" name="img" placeholder="Image URL">
-  <button type="submit">Post</button>
-</form>
+<a href="/">Home</a>
+
+<div class="write">
+  <h1>Share your thoughts</h1>
+
+  <form action='/write' method='post'>
+    <label for="title">Post Title</label>
+      <input type="text" name='title'>
+    <label for="user.name">Username</label>
+      <input type="text" name='user.name'>
+    <label for="body">Your Magical Thoughts</label>
+      <textarea rows="5" name="body"></textarea>
+    <label for="img">Img URL</label>
+      <input type="url" name="img">
+    <button type="submit">Post</button>
+  </form>
+
+</div>
