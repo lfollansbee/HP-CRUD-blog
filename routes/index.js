@@ -15,13 +15,28 @@ router.get('/write', function(req, res, next){
 })
 
 router.post('/write', function(req, res, next) {
-  knex('user').first().returning('id').insert({name: req.body.name})
-  .then(function() {
-    return knex('post').insert(req.body);
+  knex('user').first().returning('id').insert({name: req.body["user.name"]})
+  .then(function(userid) {
+    return knex('post').insert({
+      title: req.body.title,
+      user_id: userid[0],
+      body: req.body.body,
+      img: req.body.img
+    });
 }).then(function() {
     res.redirect('/');
 }).catch( function(error) {
   });
+});
+
+router.post('/edit/:id', function(req, res, next) {
+    knex('post').where({id: req.params.id}).update({
+      title: req.body.title,
+      body: req.body.body,
+      img: req.body.img
+  }).then(function(){
+    res.redirect('/see-post/'+ req.params.id)
+  })
 });
 
 router.get('/see-post/:id', function(req, res, next){
