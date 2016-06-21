@@ -2,15 +2,17 @@
   <h1>The Leaky Cauldron</h1>
   <p>Blog for Harry Potter musings.</p>
 
-  <a href="/write"><button>Share Your Thoughts in the Pensieve</button></a>
+  <a href="/add"><button>Share Your Thoughts in the Pensieve</button></a>
 
   {{#each list}}
     <div class="posts">
       <h2><a href="/see-post/{{this.id}}">{{this.title}}</a></h2>
-      <p>by: {{this.name}}</p>
+      <p>by: {{this.userName}}</p>
       <p class="body">{{this.body}}</p>
       <img class="image" src="{{this.img}}"><br>
       <a href="/edit/{{this.id}}">Edit</a>
+      <a href="/see-post/{{this.id}}">Comment</a>
     </div>
   {{/each}}
+
 </div>

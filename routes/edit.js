@@ -10,4 +10,14 @@ router.get('/:id', function(req, res, next){
   })
 })
 
+router.post('/:id', function(req, res, next) {
+  knex('post').where({id: req.params.id}).update({
+    title: req.body.title,
+    body: req.body.body,
+    img: req.body.img,
+  }).then(function(){
+    res.redirect('/see-post/'+ req.params.id)
+  })
+});
+
 module.exports = router;

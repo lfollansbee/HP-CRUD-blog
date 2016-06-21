@@ -4,17 +4,19 @@ var pg = require('pg');
 var knex = require('../db/knex.js')
 
 router.get('/', function(req, res, next) {
-  knex('post').join('user', 'user_id', 'user.id')
+  knex('post')
+  .join('user', 'user_id', 'user.id')
+  .select('user.id as userId', 'user.name as userName', 'post.id as id', 'post.title', 'post.body', 'post.img')
   .then(function(posts){
     res.render('index', {list: posts})
   })
 });
 
-router.get('/write', function(req, res, next){
-    res.render('write')
+router.get('/add', function(req, res, next){
+    res.render('add')
 })
 
-router.post('/write', function(req, res, next) {
+router.post('/add', function(req, res, next) {
   knex('user').first().returning('id').insert({name: req.body["user.name"]})
   .then(function(userid) {
     return knex('post').insert({
@@ -29,21 +31,9 @@ router.post('/write', function(req, res, next) {
   });
 });
 
-router.post('/edit/:id', function(req, res, next) {
-    knex('post').where({id: req.params.id}).update({
-      title: req.body.title,
-      body: req.body.body,
-      img: req.body.img
-  }).then(function(){
-    res.redirect('/see-post/'+ req.params.id)
-  })
-});
-
-router.get('/see-post/:id', function(req, res, next){
-  knex('user').join('post', 'user_id', 'user.id').select('post.id', 'user.name','post.title', 'post.body', 'post.img').where({'post.id': req.params.id}).first()
-  .then(function(result){
-    console.log(result);
-    res.render('see-post', {result: result})
+router.get('/:id/delete', function (req, res, next) {
+  knex('post').where({id: req.params.id}).del().then(function () {
+    res.redirect('/')
   })
 })
 

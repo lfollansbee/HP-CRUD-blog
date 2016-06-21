@@ -5,6 +5,18 @@
   <p>by: {{result.name}}</p>
   <p>{{result.body}}</p>
   <img src="{{result.img}}">
+  <a href="/edit/{{result.id}}">Edit This Post</a>
+  <a href="/{{result.id}}/delete">Delete</a>
 </div>
 
-<a href="/edit/{{result.id}}">Edit This Post</a>
+
+<div class="comment">
+  <h3>Leave a comment</h3>
+  <form action='/see-post/{{result.id}}' method='post'>
+    <label for="name">Username</label>
+      <input type="text" name='name'>
+    <label for="body">Your Comment</label>
+      <textarea rows="2" name="body"></textarea>
+    <button type="submit">Comment</button>
+  </form>
+</div>
