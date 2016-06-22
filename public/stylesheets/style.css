@@ -3,19 +3,39 @@
 }
 
 body {
-  padding: 50px;
+  /*padding: 0 50px 50px 50px;*/
   font: 14px;
   font-family: 'Raleway', sans-serif;;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(32, 57%, 77%)
 }
 
 a {
-  color: #00B7FF;
+  color: hsl(192, 91%, 32%);
+}
+
+header{
+  background-color: hsl(0, 100%, 22%);
+  color: hsl(60, 10%, 90%);
+  width: 100%;
+  padding: 0 1.5rem 1rem 1.5rem;
+}
+.home{
+  color: white;
+}
+
+.title{
+  font-family: 'Rock Salt', cursive;
 }
 
 .index{
   width: 60%;
+}
+
+img{
+  max-height: 20rem
 }
 
 .posts{
@@ -27,29 +47,55 @@ a {
   width: 100%;
   padding: .25rem;
   margin-bottom: 1rem;
+  background-color: hsl(60, 10%, 90%);
 }
 
 .body{
-  /*border: black solid 1px;*/
-  /*border-radius: 5px;*/
   padding: .5rem;
   width: 90%;
 }
 
-.edit, .add, .see-post {
+.edit, .add {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80%;
 }
 
+.see-post{
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+}
+
+.current-post{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black solid 1px;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 2rem;
+  background-color: hsl(60, 10%, 90%);
+}
+
 .comment{
   width: 25%;
 }
+
 .old-comments{
   border: black solid 1px;
   border-radius: 5px;
   padding: .5rem;
+  margin: 1rem 0;
+  background-color: hsl(0, 0%, 80%)
+}
+
+.comment-user{
+  color: hsl(0, 100%, 22%);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 form {
@@ -80,4 +126,7 @@ button{
 button:hover{
   font-weight: bold;
   background-color: hsla(0, 100%, 21%, 0.79)
+}
+.index-btn{
+  margin: 1rem 0;
 }

@@ -1,31 +1,36 @@
-<a href="/">Home</a>
+<header>
+  <h1 class="title">The Leaky Cauldron</h1>
+  <p>Blog for Harry Potter musings.</p>
+  <a class="home" href ="/">Home</a>
+</header>
 
 <div class="see-post">
-  <h1>{{post.title}}</h1>
-  <p>by: {{post.name}}</p>
-  <p>{{post.body}}</p>
-  <img src="{{post.img}}">
-  <a href="/edit/{{post.id}}">Edit This Post</a>
-  <a href="/{{post.id}}/delete">Delete Post</a>
+  <section class="current-post">
+    <h1>{{post.title}}</h1>
+    <p>by: {{post.name}}</p>
+    <p>{{post.body}}</p>
+    <img src="{{post.img}}">
+    <a href="/edit/{{post.id}}">Edit This Post</a>
+    <a href="/{{post.id}}/delete">Delete Post</a>
+  </section>
 
+  <section class="comment">
+    <h2>Comments</h2>
+    {{#each comments}}
+      <article class="old-comments">
+        <p class="comment-user">{{name}}: </p>
+        <p>{{body}}</p>
+      </article>
+    {{/each}}
+
+    <h3>Leave a comment</h3>
+    <form action='/see-post/{{post.id}}' method='post'>
+      <label for="name">Username</label>
+        <input type="text" name='name'>
+      <label for="body">Your Comment</label>
+        <textarea rows="2" name="body"></textarea>
+      <button type="submit">Comment</button>
+    </form>
+    <a href="/see-post/{{post.id}}/delete">Delete Comments</a>
+  </section>
 </div>
-
-<section class="comment">
-
-  {{#each comments}}
-    <article class="old-comments">
-      <p>{{name}}: </p>
-      <p>{{body}}</p>
-    </article>
-  {{/each}}
-  <a href="/see-post/{{post.id}}/delete">Delete All Comments</a>
-
-  <h3>Leave a comment</h3>
-  <form action='/see-post/{{post.id}}' method='post'>
-    <label for="name">Username</label>
-      <input type="text" name='name'>
-    <label for="body">Your Comment</label>
-      <textarea rows="2" name="body"></textarea>
-    <button type="submit">Comment</button>
-  </form>
-</section>

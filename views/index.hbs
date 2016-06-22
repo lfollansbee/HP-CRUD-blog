@@ -1,9 +1,10 @@
-<div class="index">
-  <h1>The Leaky Cauldron</h1>
+<header>
+  <h1 class="title">The Leaky Cauldron</h1>
   <p>Blog for Harry Potter musings.</p>
+</header>
 
-  <a href="/add"><button>Share Your Thoughts in the Pensieve</button></a>
-
+<div class="index">
+  <a href="/add"><button class="index-btn">Share Your Thoughts in the Pensieve</button></a>
   {{#each list}}
     <div class="posts">
       <h2><a href="/see-post/{{this.id}}">{{this.title}}</a></h2>
@@ -14,5 +15,4 @@
       <a href="/see-post/{{this.id}}">Comment</a>
     </div>
   {{/each}}
-
 </div>
