@@ -46,6 +46,11 @@ a {
 .comment{
   width: 25%;
 }
+.old-comments{
+  border: black solid 1px;
+  border-radius: 5px;
+  padding: .5rem;
+}
 
 form {
   display: flex;

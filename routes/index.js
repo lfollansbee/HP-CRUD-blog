@@ -31,8 +31,13 @@ router.post('/add', function(req, res, next) {
   });
 });
 
-router.get('/:id/delete', function (req, res, next) {
-  knex('post').where({id: req.params.id}).del().then(function () {
+//Delete Post - have to delete comments first before deleting post
+router.get('/:id/delete', function (req, res){
+  knex('comment').where({post_id: req.params.id}).del()
+  .then(function(){
+    return knex('post').where({id: req.params.id}).del()
+  })
+  .then(function(){
     res.redirect('/')
   })
 })
