@@ -17,6 +17,9 @@ a {
 }
 
 header{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-end;
   background-color: hsl(0, 100%, 22%);
   color: hsl(60, 10%, 90%);
   width: 100%;
