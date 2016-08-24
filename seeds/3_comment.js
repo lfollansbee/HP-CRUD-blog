@@ -18,7 +18,6 @@ function findPostId(posts, title) {
 
 exports.seed = function(knex, Promise) {
   return knex('comment').del()
-
      .then(function () {
        return Promise.all([
         knex("user").select(),
@@ -30,16 +29,16 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         knex('comment').insert({
           user_id: findUserId(users, "gryffindorLion"),
-          post_id: findPostId(posts, 'Slytherins'),
-          body: 'comment 1'}),
+          post_id: findPostId(posts, 'Slytherin Ghost'),
+          body: 'Slytherins have produced the most dark wizards of any house.'}),
         knex('comment').insert({
-          user_id: findUserId(users, "theFatLady"),
-          post_id: findPostId(posts, 'Gryffindor Colors'),
-          body: 'comment 2'}),
+          user_id: findUserId(users, "Hermione"),
+          post_id: findPostId(posts, 'Gryffindor'),
+          body: 'So proud to be a Gryffindor!'}),
         knex('comment').insert({
           user_id: findUserId(users, "bloodyBaron"),
           post_id: findPostId(posts, 'Previous Gryffindor Passwords'),
-          body: 'comment 3'})
+          body: 'I wish the Fat Lady was less emotional sometimes.'})
       ])
     })
   })
