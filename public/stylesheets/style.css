@@ -3,7 +3,6 @@
 }
 
 body {
-  /*padding: 0 50px 50px 50px;*/
   font: 14px;
   font-family: 'Raleway', sans-serif;;
   display: flex;
@@ -13,6 +12,7 @@ body {
 }
 
 a {
+  text-decoration: none;
   color: hsl(192, 91%, 32%);
 }
 
