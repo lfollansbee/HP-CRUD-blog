@@ -9,3 +9,5 @@ Welcome to magical world of Harry Potter. This is a CRUD (Create, Read, Update, 
 * knex migrate:latest
 * knex seed:run
 * npm start
+
+Deployed site: https://hpblog.herokuapp.com/
