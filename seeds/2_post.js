@@ -1,5 +1,4 @@
 function findUserId(users, name) {
-  // console.log(users);
   for (var i=0; i< users.length; i++){
     var user = users[i];
     if (name === user.name) {

@@ -19,10 +19,9 @@ router.get('/:id', function(req, res, next){
 })
 
 router.post('/:id', function(req, res, next){
-  // console.log(req.body);
-  knex('user').select().where({'user.name': req.body.name}).first()
+  knex('user').select()
+  .where({'user.name': req.body.name}).first()
   .then(function(user){
-    // console.log(user);
     if(user){
       return [user]
     }else{
@@ -30,7 +29,6 @@ router.post('/:id', function(req, res, next){
     }
   })
   .then(function(user){
-    // console.log(user);
     var comment = {
       user_id: user[0].id,
       post_id: req.params.id,
@@ -43,7 +41,6 @@ router.post('/:id', function(req, res, next){
   })
 })
 
-//Delete all comments
 router.get('/:id/delete', function (req, res, next) {
   knex('comment').where({post_id: req.params.id}).del()
   .then(function () {

@@ -32,7 +32,6 @@ router.post('/add', function(req, res, next) {
   });
 });
 
-//Delete Post - have to delete comments first before deleting post
 router.get('/:id/delete', function (req, res){
   knex('comment').where({post_id: req.params.id}).del()
   .then(function(){
