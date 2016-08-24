@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('title')
     table.integer('user_id').references('user.id')
-    table.string('body')
+    table.text('body')
     table.string('img')
   })
 };
