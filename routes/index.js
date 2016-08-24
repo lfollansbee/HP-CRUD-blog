@@ -17,7 +17,8 @@ router.get('/add', function(req, res, next){
 })
 
 router.post('/add', function(req, res, next) {
-  knex('user').first().returning('id').insert({name: req.body["user.name"]})
+  knex('user').first().returning('id')
+  .insert({name: req.body["user.name"]})
   .then(function(userid) {
     return knex('post').insert({
       title: req.body.title,
@@ -25,9 +26,9 @@ router.post('/add', function(req, res, next) {
       body: req.body.body,
       img: req.body.img
     });
-}).then(function() {
+  }).then(function() {
     res.redirect('/');
-}).catch( function(error) {
+  }).catch( function(error) {
   });
 });
 

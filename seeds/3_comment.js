@@ -19,7 +19,6 @@ function findPostId(posts, title) {
 exports.seed = function(knex, Promise) {
   return knex('comment').del()
 
-
      .then(function () {
        return Promise.all([
         knex("user").select(),
@@ -43,5 +42,5 @@ exports.seed = function(knex, Promise) {
           body: 'comment 3'})
       ])
     })
-  }
-)};
+  })
+};

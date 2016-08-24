@@ -5,8 +5,13 @@ var knex = require('../db/knex.js')
 
 router.get('/:id', function(req, res, next){
   Promise.all([
-    knex('post').join('user', 'user_id', 'user.id').select('post.id', 'user.name','post.title', 'post.body', 'post.img').where({'post.id': req.params.id}).first(),
-    knex('comment').join('user', 'user.id', 'user_id').select().where({'post_id': req.params.id})
+    knex('post')
+      .join('user', 'user_id', 'user.id')
+      .select('post.id', 'user.name','post.title', 'post.body', 'post.img')
+      .where({'post.id': req.params.id}).first(),
+    knex('comment')
+      .join('user', 'user.id', 'user_id').select()
+      .where({'post_id': req.params.id})
   ])
   .then(function(results){
     res.render('see-post', {post: results[0], comments: results[1]})
